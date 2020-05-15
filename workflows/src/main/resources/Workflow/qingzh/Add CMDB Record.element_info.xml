@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from PSCoE o11n-convert</comment>
+<entry key="categoryPath">qingzh</entry>
+<entry key="name">Add CMDB Record</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">0388c97e-d5c2-4d9f-85e7-cc9f8b132006</entry>
+</properties>

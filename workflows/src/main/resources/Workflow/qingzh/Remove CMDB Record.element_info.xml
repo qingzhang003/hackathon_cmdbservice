@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from PSCoE o11n-convert</comment>
+<entry key="categoryPath">qingzh</entry>
+<entry key="name">Remove CMDB Record</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">714f75d5-dae1-4ff6-9ce5-e06a9af0df14</entry>
+</properties>

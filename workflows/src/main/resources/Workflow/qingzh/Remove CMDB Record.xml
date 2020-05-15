@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="714f75d5-dae1-4ff6-9ce5-e06a9af0df14" version="0.0.2" api-version="6.0.0" allowed-operations="evf" restartMode="1" resumeFromFailedMode="0">
+  <display-name><![CDATA[Remove CMDB Record]]></display-name>
+  <position y="50.0" x="100.0"/>
+  <input>
+    <param name="cmdb" type="string">
+      <description><![CDATA[CMDB]]></description>
+    </param>
+    <param name="recordId" type="number"/>
+  </input>
+  <workflow-item name="item0" type="end" end-mode="0">
+    <position y="45.40909090909091" x="384.5"/>
+  </workflow-item>
+  <workflow-item name="item1" out-name="item0" type="task">
+    <display-name><![CDATA[Scriptable task]]></display-name>
+    <script encoded="false"><![CDATA[var Class = System.getModule("com.vmware.pscoe.library.class").Class();
+var CmdbService = Class.load("com.vmware.hackathon.qing.cmdbservice",
+        "CmdbService");
+
+var service = new CmdbService(cmdb);
+if(service.deleteRecord(recordId))
+	System.log("ok");
+else
+	System.error("failed");]]></script>
+    <in-binding>
+      <bind name="cmdb" type="string" export-name="cmdb"/>
+      <bind name="recordId" type="number" export-name="recordId"/>
+    </in-binding>
+    <out-binding/>
+    <position y="55.40909090909091" x="204.5"/>
+  </workflow-item>
+  <presentation>
+    <p-param name="cmdb">
+      <desc><![CDATA[CMDB]]></desc>
+      <p-qual kind="static" name="genericEnumeration" type="Array/string"><![CDATA[#{#string#Kangaroo#;#string#Wombat#;#string#Platypus#}#]]></p-qual>
+    </p-param>
+    <p-param name="recordId">
+      <desc><![CDATA[Record ID]]></desc>
+    </p-param>
+  </presentation>
+</workflow>
