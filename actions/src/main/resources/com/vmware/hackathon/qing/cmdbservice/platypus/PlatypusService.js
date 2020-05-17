@@ -7,9 +7,11 @@
         "CmdbRestBase");
         
     return Class.define(function PlatypusService(){
-        this._urlCreateTemplate = "http://platypus.cba.com/transaction/create";
-        this._urlDeleteTemplate = "http://platypus.cba.com/api/transaction/delete"; 
-        this._urlCommitTemplate = "http://platypus.cba.com/api/transaction/commit";    
+        CmdbRestBase.call(this);
+        this._urlBase = "http://platypus.cba.com";
+        this._urlCreateTemplate = "/api/transaction/create";
+        this._urlDeleteTemplate = "/api/transaction/delete"; 
+        this._urlCommitTemplate = "/api/transaction/commit";    
         
         this._prepareCommitPayload = function(httpData){
             if(!this._checkResult(httpData))

@@ -12,7 +12,7 @@
     <dependency>
             <groupId>com.vmware.pscoe.library</groupId>
             <artifactId>class</artifactId>
-            <version>2.4.7</version>
+            <version>RELEASE</version>
             <type>package</type>
     </dependency>
     <dependency>

@@ -1,0 +1,8 @@
+{
+  "iconId": "vcoIcon_256x256.png",
+  "name": "Remove CMDB Record",
+  "quota": 0,
+  "service": "XaaS",
+  "status": "PUBLISHED",
+  "statusName": "Published"
+}

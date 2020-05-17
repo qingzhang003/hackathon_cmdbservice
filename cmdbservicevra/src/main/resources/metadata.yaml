@@ -1,0 +1,8 @@
+name: "com.vmware.hackathon.qing.cmdbservicevra-1.0.0-SNAPSHOT"
+productVersion: "7.6.0-SNAPSHOT"
+data:
+- locator: "xaas-blueprint/7b2b293b-e868-4710-ad38-6ef5cd248a5d.yaml"
+  name: "Remove CMDB Record"
+- locator: "xaas-blueprint/b41ae907-a7d3-4ca7-9acc-0eff33435ea1.yaml"
+  name: "Add CMDB Record"
+exportTime: "2020-05-16T03:16:26.896Z"

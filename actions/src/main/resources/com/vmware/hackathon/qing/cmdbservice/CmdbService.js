@@ -20,8 +20,8 @@
             return cmdbservice.restDeleteRecord(id);
         };
 
-        this.setRestHostOptions = function(endpointUrl, endpointName, username, password){
-            cmdbservice.setRestOptions(endpointUrl, endpointName, username, password);
+        this.setRestCredential = function(username, password){
+            cmdbservice.setRestCredential(username, password);
         };
 
     }, null, null);

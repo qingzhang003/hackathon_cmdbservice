@@ -1,12 +1,12 @@
 /**
  * Write a brief description of the purpose of the action.
- */
+*/
 (function () {
     var Class = System.getModule("com.vmware.pscoe.library.class").Class();
 
     return Class.define(function CmdbRestBase(){
-        this._endpointUrl = '';
-        this._endpointName = '';
+        this._urlBase = '';
+        this._endpointName = 'cmdbendpoint';
         this._username = '';
         this._password = '';
         this._contentType = 'application/json';
@@ -18,25 +18,29 @@
         this._urlCommitTemplate = '';
     }, {
 
-        setRestOptions: function(endpointUrl, endpointName, username, password){
-            this._endpointUrl = endpointUrl;
-            this._endpointName = endpointName;
+        setRestCredential: function(username, password){
             this._username = username;
             this._password = password;
         },
 
         _getRestClient: function(){
             if(this._restClient == null){
-                var RestHostFactory = System.getModule("com.vmware.pscoe.library.rest").RestHostFactory();
-                var restHost = RestHostFactory.newHostWithBasicAuth(this._endpointUrl, this._endpointName, this._username, this._password);
-                this._restClient = System.getModule("com.vmware.pscoe.library.rest").RestClient();        
+                // var RestHostFactory = System.getModule("com.vmware.pscoe.library.rest").RestHostFactory();
+                var RestHostFactory = Class.load("com.vmware.pscoe.library.rest", "RestHostFactory");
+                // var restHostFactory = new RestHostFactory();
+                var restHost = null;
+                if(this._username != '')
+                    restHost = RestHostFactory.newHostWithBasicAuth(this._urlBase, this._endpointName, this._username, this._password);
+                else                
+                    restHost = RestHostFactory.newHostWithNoAuth(this._urlBase, this._endpointName);
+                var RestClient = Class.load("com.vmware.pscoe.library.rest", "RestClient");  
+                this._restClient = new RestClient(restHost);
             }
             return this._restClient;
         },
 
         _restPostCall: function(urlTemplate, params, payload){
-
-            var restClient = this._getRestClient();
+           var restClient = this._getRestClient();
             var httpData = restClient.post(urlTemplate, params, payload, {
                     headers: {
                         "Content-Type": this._contentType

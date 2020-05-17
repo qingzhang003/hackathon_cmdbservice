@@ -11,8 +11,10 @@
         "CmdbRestBase");
         
     return Class.define(function KangarooService(){
-        this._urlCreateTemplate = "http://kangaroo.cba.com/api/record";
-        this._urlDeleteTemplate = "http://kangaroo.cba.com/api/record/{id}";     
+        CmdbRestBase.call(this);
+        this._urlBase = "http://kangaroo.cba.com";
+        this._urlCreateTemplate = "/api/record";
+        this._urlDeleteTemplate = "/api/record/{id}";     
         
         this._prepareDeleteRecordParams = function(id){
             return [id];

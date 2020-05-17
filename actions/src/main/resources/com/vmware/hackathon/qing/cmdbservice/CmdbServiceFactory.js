@@ -1,5 +1,7 @@
 /**
  * Write a brief description of the purpose of the action.
+ * Imports
+ * System.getModule("com.vmware.hackathon.qing.cmdbservice.kangaroo").KangarooService();
  */
 (function () {
     var Class = System.getModule("com.vmware.pscoe.library.class").Class();

@@ -7,10 +7,12 @@
         "CmdbRestBase");
         
     return Class.define(function WombatService(){
+        CmdbRestBase.call(this);
         this._contentType = 'application/xml';
         this._stringifyJsonContent = false;
-        this._urlCreateTemplate = "http://wombat.cba.com/cmdb/v1/record";
-        this._urlDeleteTemplate = "http://wombat.cba.com/cmdb/v1/record";     
+        this._urlBase = "http://wombat.cba.com";
+        this._urlCreateTemplate = "/cmdb/v1/record";
+        this._urlDeleteTemplate = "/cmdb/v1/record";     
         
         this._prepareCreateRecordPayload = function(name, size){
             var ret = "<CreateRecord>";
@@ -31,7 +33,7 @@
             else if(responseObj.statusCode >= 400 && responseObj.statusCode <= 499)
                 return false;
             else
-                throw "Wombat REST call returned status code: " + responseObj.statusCode + ", and content: " + responseObj.contentAsString;
+                throw new Error("Wombat REST call returned status code: " + responseObj.statusCode + ", and content: " + responseObj.contentAsString);
         }
 
     }, null, CmdbRestBase);
