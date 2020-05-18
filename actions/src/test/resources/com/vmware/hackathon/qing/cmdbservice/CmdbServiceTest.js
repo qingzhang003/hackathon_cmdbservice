@@ -2,32 +2,15 @@
 This is a test
 */
 describe("CMDB Service Test", function() {
-    System = System.getModule("com.vmware.hackathon.qing.mock").SystemExtender().mockSystem();
+    // System = System.getModule("com.vmware.hackathon.qing.mock").SystemExtender().mockSystem();
     var Class = System.getModule("com.vmware.pscoe.library.class").Class();
-    var CmdbService = Class.load("com.vmware.hackathon.qing.cmdbservice",
-        "CmdbService");
-    
-    // beforeEach(function() {
-    //     // var someObject = jasmine.createSpyObj('RestHostFactory', ['newHostWithNoAuth']);
-    //     var someObject = jasmine.createSpyObj('CmdbService', ['_getRestClient']);
-        
-    //     someObject._getRestClient.and.callFake(function() {
-    //         return null;
-    //     });
-    
-    // });    
 
     it("kangaroo test", function() {
+        var CmdbService = Class.load("com.vmware.hackathon.qing.cmdbservice",
+            "CmdbService");
         var service = new CmdbService("Kangaroo");
- 
-        // spyOn(service, "createRecord").and.returnValue(true);
 
-        // // var someObject = jasmine.createSpyObj('RestHostFactory', ['newHostWithNoAuth']);
-        // var someObject = jasmine.createSpyObj('service', ['_getRestClient']);
-        
-        // someObject._getRestClient.and.callFake(function() {
-        //     return null;
-        // });
+        spyOn(service, "createRecord").and.returnValue(true);
 
         expect(service.createRecord("my record", 2333)).toBeTruthy();
     });
@@ -39,6 +22,22 @@ describe("CMDB Service Test", function() {
 
     it("user name test", function(){
         expect(cmdbservice._contentType).toBe('application/json');
+    });
+
+    var myfakeCls = function() {
+        this.post = function(urlTemplate, param, playlod){
+            expect(urlTemplate).toBe("/api/record");
+            return { "statusCode": 200, "contentAsString": "{}" };
+        }            
+    };
+
+    it("kangaroo service test", function(){
+        spyOn(cmdbservice, "_getRestClient").and.callFake(function(){
+            // var RestClient = System.getModule("com.vmware.hackathon.qing.mock").RestClient();
+            // return new RestClient(null);
+            return new myfakeCls();
+        });
+        expect(cmdbservice.restCreateRecord("ads", 22)).toBeTruthy();
     });
 
     it("user name test 2", function(){
@@ -107,7 +106,7 @@ describe("CMDB Service Test", function() {
         //     expect(e).toContain("Wombat REST");
         // }
         expect(cmdbservice_wom._checkResult(httpData2)).toBeTruthy();
-        //expect(httpData2.statusCode >= 200 && httpData2.statusCode <= 400).toBeTruthy();
+       
     });
 
 

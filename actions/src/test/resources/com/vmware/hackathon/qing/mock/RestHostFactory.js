@@ -5,7 +5,6 @@
     RestHostFactory.prototype = {};
 
     RestHostFactory.newHostWithBasicAuth = function(url, name, username, password) {
-        // return getHost(url, name);
         return null;
     };
 
