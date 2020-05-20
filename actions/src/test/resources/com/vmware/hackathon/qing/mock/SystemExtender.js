@@ -13,12 +13,12 @@
 				"RestHostMock": function () {
 					return Original.getModule("com.vmware.pscoe.library.rest").RestHostMock();
 				},
-				"RestHostFactory": function () {
-					return Original.getModule("com.vmware.pscoe.library.rest").RestHostFactory();
-				}
-				// "RestHostFactory": function(){
-				// 	return System.getModule("com.vmware.hackathon.qing.mock").RestHostFactory();
+				// "RestHostFactory": function () {
+				// 	return Original.getModule("com.vmware.pscoe.library.rest").RestHostFactory();
 				// }
+				"RestHostFactory": function(){
+					return System.getModule("com.vmware.hackathon.qing.mock").RestHostFactory();
+				}
 
 			}
 		};

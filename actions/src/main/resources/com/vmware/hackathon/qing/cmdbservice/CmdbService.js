@@ -1,27 +1,27 @@
 /**
- * Write a brief description of the purpose of the action.
+ * This is the entry point to the cmdb service when using in a script
  */
 (function () {
     var Class = System.getModule("com.vmware.pscoe.library.class").Class();
 
     return Class.define(function CmdbService(cmdbType){
-        var Class = System.getModule("com.vmware.pscoe.library.class").Class();
-        var CmdbServiceFactory = Class.load("com.vmware.hackathon.qing.cmdbservice",
-            "CmdbServiceFactory");
+        var CmdbProviderFactory = Class.load("com.vmware.hackathon.qing.cmdbservice",
+            "CmdbProviderFactory");
     
-        var factory = new CmdbServiceFactory();
-        var cmdbservice = factory.getService(cmdbType);
+        var factory = new CmdbProviderFactory();
+        var cmdbprovider = factory.getProvider(cmdbType);
 
         this.createRecord = function(name, size){
-            return cmdbservice.restCreateRecord(name, size);                
+            return cmdbprovider.createCi(name, size);                
         };
 
         this.deleteRecord = function(id){
-            return cmdbservice.restDeleteRecord(id);
+            return cmdbprovider.deleteCi(id);
         };
 
+        // This can be called before createRecord() and deleteRecord()
         this.setRestCredential = function(username, password){
-            cmdbservice.setRestCredential(username, password);
+            cmdbprovider.setRestCredential(username, password);
         };
 
     }, null, null);
