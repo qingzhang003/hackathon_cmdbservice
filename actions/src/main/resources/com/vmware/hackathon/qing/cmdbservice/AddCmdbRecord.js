@@ -1,5 +1,5 @@
 /**
- * Write a brief description of the purpose of the action.
+ * Add CMDB record.
  * @param {string} cmdbType - cmdb type, such as Kangaroo, Wombat, or Platypus
  * @param {string} recordName - cmdb record name
  * @param {number} recordSize - cmdb record size

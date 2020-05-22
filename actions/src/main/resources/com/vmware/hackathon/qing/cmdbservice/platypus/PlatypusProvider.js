@@ -1,5 +1,5 @@
 /**
- * Write a brief description of the purpose of the action.
+  *  Platypus CMDB provider, override the base implementation
  */
 (function () {
     var Class = System.getModule("com.vmware.pscoe.library.class").Class();

@@ -1,5 +1,5 @@
 /**
- * Write a brief description of the purpose of the action.
+ * Remove CMDB Record.
  * @param {string} cmdbType - cmdb type, such as Kangaroo, Wombat, or Platypus
  * @param {number} recordId - cmdb record Id.
  * @returns {boolean} - return true = success, false = failure, or throw exception

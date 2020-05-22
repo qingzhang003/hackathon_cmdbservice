@@ -5,7 +5,7 @@
 		var methods = {
 			"com.vmware.pscoe.library.rest": {
 				"RestClient": function () {
-					return System.getModule("com.vmware.hackathon.qing.mock").RestClient();
+					return System.getModule("com.vmware.hackathon.qing.cmdbservice.ExtenderMocking.mocks").RestClient();
 				},
 				"RestTemplate": function (host) {
 					return Original.getModule("com.vmware.pscoe.library.rest").RestTemplate(host);
@@ -17,7 +17,7 @@
 				// 	return Original.getModule("com.vmware.pscoe.library.rest").RestHostFactory();
 				// }
 				"RestHostFactory": function(){
-					return System.getModule("com.vmware.hackathon.qing.mock").RestHostFactory();
+					return System.getModule("com.vmware.hackathon.qing.cmdbservice.ExtenderMocking.mocks").RestHostFactory();
 				}
 
 			}

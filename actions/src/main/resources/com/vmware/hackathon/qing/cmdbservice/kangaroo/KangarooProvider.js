@@ -1,5 +1,5 @@
 /**
- *      The following are implemented in the base class:
+ *  Kangaroo CMDB provider, override the base implementation
  */
 (function () {
     var Class = System.getModule("com.vmware.pscoe.library.class").Class();
@@ -12,12 +12,9 @@
         this._requestUrl.urlCreateTemplate = "/api/record";
         this._requestUrl.urlDeleteTemplate = "/api/record/{id}";     
         
-        // Only need to override this base class implementation
-        this.createPostParams = function(requestObj){
-            if(requestObj.action == "Delete")
-                return [requestObj.id];
-            else
-                return [];
+        // One off which uses delete REST call.
+        this.deleteCi = function(id){
+            return this._cmdbRestDelete(this._requestUrl.urlDeleteTemplate, [id]);
         };
 
     }, null, CmdbProviderBase);
