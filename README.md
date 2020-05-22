@@ -22,6 +22,8 @@ PSCoE Hackathon CMDB Service
        ---> *WombatProvider.js* \
        |\
        ---> *PlatypusProvider.js*
+
+### Notes
 - Majority of functionalities are implemented in base provider
   - Very few needs to be overridden in individual providers.
   - Single function for both single POST call and 2 POST calls (Platypus)  
