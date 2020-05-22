@@ -13,15 +13,16 @@ PSCoE Hackathon CMDB Service
 - *CmdbService.js*:
   - Can be used for scriptable task in vRO, and set user name and password if needed.
 ### Level 2
-- *CmdbProviderFactory.js*: Returns provider object based on CMDB type. Used by top level class (level 1)
+- *CmdbProviderFactory.js*: 
+  - Returns provider object based on CMDB type. Used by top level class (level 1)
 ### Level 3
 - *CmdbProviderBase.js* <---- *RestApiService.js* (composition to provider class)\
        |\
-       ---> *KangraooProvider.js* \
+       ---> *KangraooProvider.js* (inheritance)\
        |\
-       ---> *WombatProvider.js* \
+       ---> *WombatProvider.js* (inheritance)\
        |\
-       ---> *PlatypusProvider.js*
+       ---> *PlatypusProvider.js* (inheritance)
 
 ### Notes
 - Majority of functionalities are implemented in base provider
